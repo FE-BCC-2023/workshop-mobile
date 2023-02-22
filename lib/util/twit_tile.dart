@@ -133,9 +133,10 @@ class TweetTile extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 9,
             softWrap: true,
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: twitBlack,
+              fontSize: 18
             ),
           ),
           Row(

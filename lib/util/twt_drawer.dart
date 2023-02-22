@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bloc/auth/auth_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../ui/auth/login_page.dart';
 import 'app_color.dart';
@@ -87,9 +89,7 @@ class TwitDrawer extends StatelessWidget {
                       style: TextStyle(color: Colors.red),
                     ),
                     onTap: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                          (route) => false);
+                      context.read<AuthBloc>().add(LogoutEvent());
                     },
                   ),
                 ],
