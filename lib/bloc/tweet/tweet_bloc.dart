@@ -38,6 +38,18 @@ class TweetBloc extends Bloc<TweetEvent, TweetState> {
       }
       
     });
+
+    on<UpdateTweet>((event, emit) async{
+      emit(UpdateTweetLoading());
+      try {
+        var reponse = await _tweetRepository.updateTweet(event.tweetModel);
+
+        reponse ? emit(UpdateTweetSucees()) : emit(UpdateTweetEror(eror: "Update tweet faild"));
+      } catch (e) {
+        emit(UpdateTweetEror(eror: e.toString()));
+        
+      }
+    });
   }
 
  

@@ -36,5 +36,16 @@ class GetTweetEror extends TweetState{
   GetTweetEror(this.eror);
 
 }
+class UpdateTweetSucees extends TweetState{}
+
+class UpdateTweetEror extends TweetState {
+  final String eror;
+  UpdateTweetEror({
+    required this.eror,
+  });
+
+}
+
+class UpdateTweetLoading extends TweetState{}
 
 

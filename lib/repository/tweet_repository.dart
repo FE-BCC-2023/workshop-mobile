@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_application_1/model/tweet_model.dart';
 import 'package:flutter_application_1/repository/cahce_repository.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 Future<String> getToken() async {
@@ -46,6 +45,7 @@ class TweetRepository {
 
   Future getAllTweet() async {
     final token = await getToken();
+    
 
     var uri = Uri.parse("$_baseUrl/tweet/all");
 
@@ -67,13 +67,44 @@ class TweetRepository {
             .toList();
 
         return allTweet;
-      }
-       else {
+      } else {
         print("getAllTweet has fail [tweet_repository] : ${response.body}");
-       }
+      }
     } catch (e) {
       print("GetAllTwet eror [tweet_repositoiry] : ${e.toString()}");
     }
     return null;
+  }
+
+  Future updateTweet(TweetModel tweetModel) async {
+    var uri = Uri.parse("$_baseUrl/tweet/update");
+    final token = await getToken();
+
+    try {
+      var response = await _client.put(
+        uri,
+        headers: {
+          "Authorization": "Bearer $token",
+          'Content-Type': 'application/json',
+          'Accept': '*/*',
+        },
+        body: json.encode({
+          'title' : 'tweet aku',
+          'description' : tweetModel.description,
+          'id' : tweetModel.id
+        })
+      );
+
+      if(response.statusCode == 200){
+        print("Updatetweet has succes [tweet_repository]");
+        return true;
+      }
+      else{
+        print("Updatetweet has fail [tweet_repository]");
+      }
+    } catch (e) {
+      print("Eror at updatetweet [tweet_repository] : ${e.toString()}");
+    }
+    return false;
   }
 }

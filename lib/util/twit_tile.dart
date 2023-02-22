@@ -1,26 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/util/app_color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'package:flutter_application_1/model/tweet_model.dart';
+import 'package:flutter_application_1/util/app_color.dart';
 
 import '../ui/edit_page.dart';
 import '../ui/tweet_detail.dart';
 
 class TweetTile extends StatelessWidget {
-  final int tweetId;
-  final String username;
-  final String userId;
-  final String postTime;
-  final String? content;
+  TweetModel tweetmodel;
+  TweetTile({
+    Key? key,
+    required this.tweetmodel,
+  }) : super(key: key);
 
-  const TweetTile(
-      {Key? key,
-      required this.tweetId,
-      required this.username,
-      required this.userId,
-      required this.postTime,
-      this.content})
-      : super(key: key);
+ 
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,7 @@ class TweetTile extends StatelessWidget {
       onTap: () => Navigator.push(
           context,
           CupertinoPageRoute(
-            builder: (_) => TweetDetail(),
+            builder: (_) => TweetDetail(tweetmodel: tweetmodel),
           )),
       contentPadding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
       leading: CircleAvatar(
@@ -43,7 +40,7 @@ class TweetTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                username,
+                'username',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -51,7 +48,7 @@ class TweetTile extends StatelessWidget {
                 maxLines: 1,
               ),
               Text(
-                userId,
+                '${tweetmodel.userId}',
                 style: TextStyle(
                   color: twitDarkGrey,
                   fontSize: 14,
@@ -68,7 +65,7 @@ class TweetTile extends StatelessWidget {
                 ),
               ),
               Text(
-                postTime,
+                '${tweetmodel.createdAt}',
                 style: TextStyle(
                   color: twitDarkGrey,
                   fontSize: 14,
@@ -112,7 +109,7 @@ class TweetTile extends StatelessWidget {
                 Navigator.push(
                   context,
                   CupertinoPageRoute(
-                    builder: (_) => EditPage(),
+                    builder: (_) => EditPage(tweetModel:tweetmodel),
                   ),
                 );
               }
@@ -129,7 +126,7 @@ class TweetTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            content ?? '',
+            tweetmodel.description,
             overflow: TextOverflow.ellipsis,
             maxLines: 9,
             softWrap: true,

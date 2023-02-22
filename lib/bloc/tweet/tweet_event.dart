@@ -1,6 +1,6 @@
 part of 'tweet_bloc.dart';
 
-@immutable
+
 abstract class TweetEvent {}
 
 class CreateTweet extends TweetEvent{
@@ -12,3 +12,10 @@ class CreateTweet extends TweetEvent{
 }
 
 class GetTweet extends TweetEvent{}
+
+class UpdateTweet extends TweetEvent {
+  TweetModel tweetModel;
+  UpdateTweet({
+    required this.tweetModel,
+  });
+}

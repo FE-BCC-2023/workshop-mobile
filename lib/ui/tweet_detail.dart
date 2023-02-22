@@ -2,12 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:flutter_application_1/model/tweet_model.dart';
+
 import '../util/app_color.dart';
 import '../util/reply_title.dart';
 import 'edit_page.dart';
 
 class TweetDetail extends StatefulWidget {
-  const TweetDetail({Key? key}) : super(key: key);
+  TweetModel tweetmodel;
+  TweetDetail({
+    Key? key,
+    required this.tweetmodel,
+  }) : super(key: key);
 
   @override
   _TweetDetailState createState() => _TweetDetailState();
@@ -99,7 +105,7 @@ class _TweetDetailState extends State<TweetDetail> {
                                       ),
                                       SizedBox(height: 3),
                                       Text(
-                                        '@userId',
+                                        '${widget.tweetmodel.userId}',
                                         style: TextStyle(
                                           color: twitDarkGrey,
                                           fontSize: 14,
@@ -148,7 +154,7 @@ class _TweetDetailState extends State<TweetDetail> {
                                     Navigator.push(
                                       context,
                                       CupertinoPageRoute(
-                                        builder: (_) => EditPage(),
+                                        builder: (_) => EditPage(tweetModel: widget.tweetmodel),
                                       ),
                                     );
                                   }
@@ -162,11 +168,7 @@ class _TweetDetailState extends State<TweetDetail> {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            'Flutter & Flame: Effects and ads published by '
-                            '@RealDevOwl in \n#FlutterCommunity '
-                            '\n\nmedium.com/flutter-community/flutter-flame'
-                            '-effects-and-ads-3e243009d18c '
-                            '\n\ncc:  #Flutter @nlycskn \n@r_FlutterDev',
+                            widget.tweetmodel.description,
                             style: TextStyle(
                               fontSize: 20,
                             ),

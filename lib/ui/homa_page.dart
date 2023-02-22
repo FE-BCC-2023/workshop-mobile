@@ -49,11 +49,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: state.allTweet.length,
               itemBuilder: (listViewCtx, index) {
                 return TweetTile(
-                  tweetId: state.allTweet[index].id,
-                  userId: state.allTweet[index].userId.toString(),
-                  username: 'username',
-                  postTime: state.allTweet[index].createdAt.toIso8601String(),
-                  content: state.allTweet[index].description,
+                  tweetmodel: state.allTweet[index],
                 );
               },
             );

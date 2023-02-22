@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../util/app_color.dart';
 
 class Compose extends StatefulWidget {
+  
   @override
   State<Compose> createState() => _ComposeState();
 }
