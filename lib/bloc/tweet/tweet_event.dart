@@ -1,6 +1,5 @@
 part of 'tweet_bloc.dart';
 
-
 abstract class TweetEvent {}
 
 class CreateTweet extends TweetEvent{
@@ -19,3 +18,13 @@ class UpdateTweet extends TweetEvent {
     required this.tweetModel,
   });
 }
+
+
+class DeleteTweet extends TweetEvent {
+  int tweetId;
+  DeleteTweet({
+    required this.tweetId,
+  });
+}
+
+

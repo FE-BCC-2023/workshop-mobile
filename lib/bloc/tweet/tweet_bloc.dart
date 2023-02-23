@@ -50,6 +50,18 @@ class TweetBloc extends Bloc<TweetEvent, TweetState> {
         
       }
     });
+
+    on<DeleteTweet>((event, emit)  async{
+      emit(DeleteTweetLoading());
+      try {
+        var response = await _tweetRepository.deleteTweet(event.tweetId);
+
+        response ? emit(DeleteTweetSuccess()) : emit(DeleteTweetEror("Deletet Tweet Fail"));
+      } catch (e) {
+        emit(DeleteTweetEror(e.toString()));
+        
+      }
+    });
   }
 
  

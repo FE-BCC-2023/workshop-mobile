@@ -32,6 +32,8 @@ class _HomePageState extends State<HomePage> {
           listener: (context, state) {
             if(state is GetTweetEror){
               ReuseableWidget.showSnackBar(context, state.eror);
+            } else if (state is DeleteTweetSuccess){
+              ReuseableWidget.showSnackBar(context, "Delete tweet succees");
             }
           },
           builder: (context, state) {

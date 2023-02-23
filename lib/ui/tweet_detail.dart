@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bloc/tweet/tweet_bloc.dart';
+import 'package:flutter_application_1/ui/app.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter_application_1/model/tweet_model.dart';
@@ -133,7 +136,10 @@ class _TweetDetailState extends State<TweetDetail> {
                                         ],
                                       ),
                                       value: 1,
-                                      onTap: () {},
+                                      onTap: () {
+                                        context.read<TweetBloc>().add(DeleteTweet(tweetId: widget.tweetmodel.id));
+                                        Navigator.push(context, MaterialPageRoute(builder: (_)=> const App()));
+                                      },
                                     ),
                                     PopupMenuItem(
                                       child: Row(
@@ -323,3 +329,5 @@ class _TweetDetailState extends State<TweetDetail> {
     );
   }
 }
+
+

@@ -45,7 +45,6 @@ class TweetRepository {
 
   Future getAllTweet() async {
     final token = await getToken();
-    
 
     var uri = Uri.parse("$_baseUrl/tweet/all");
 
@@ -81,29 +80,53 @@ class TweetRepository {
     final token = await getToken();
 
     try {
-      var response = await _client.put(
-        uri,
-        headers: {
-          "Authorization": "Bearer $token",
-          'Content-Type': 'application/json',
-          'Accept': '*/*',
-        },
-        body: json.encode({
-          'title' : 'tweet aku',
-          'description' : tweetModel.description,
-          'id' : tweetModel.id
-        })
-      );
+      var response = await _client.put(uri,
+          headers: {
+            "Authorization": "Bearer $token",
+            'Content-Type': 'application/json',
+            'Accept': '*/*',
+          },
+          body: json.encode({
+            'title': 'tweet aku',
+            'description': tweetModel.description,
+            'id': tweetModel.id
+          }));
 
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         print("Updatetweet has succes [tweet_repository]");
         return true;
-      }
-      else{
+      } else {
         print("Updatetweet has fail [tweet_repository]");
       }
     } catch (e) {
       print("Eror at updatetweet [tweet_repository] : ${e.toString()}");
+    }
+    return false;
+  }
+
+  Future deleteTweet(int tweetId) async {
+    var uri = Uri.parse("$_baseUrl/tweet/delete");
+    final token = await getToken();
+
+    try {
+      var response = await _client.delete(uri, headers: {
+        "Authorization": "Bearer $token",
+        
+      },
+      body: {
+        'id' : tweetId.toString(),
+      }
+      );
+
+      if(response.statusCode == 200){
+        print("Delete tweet has succes [tweet_repository]");
+        return true;
+      } else{
+        print("Delete tweet has fail [tweet_repository]");
+
+      }
+    } catch (e) {
+      print("Eror at delete tweet : ${e.toString()}");
     }
     return false;
   }
