@@ -116,7 +116,7 @@ class _EditPageState extends State<EditPage> {
                         ),
                         Center(
                           child: Container(
-                            margin: EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(left: 10),
                             height: MediaQuery.of(context).size.height * 0.15,
                             width: MediaQuery.of(context).size.width * 0.75,
                             child: TextField(
@@ -149,7 +149,7 @@ class _EditPageState extends State<EditPage> {
                             color: twitBlue,
                             size: 16,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
                           Text(
@@ -165,29 +165,29 @@ class _EditPageState extends State<EditPage> {
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.image_outlined),
+                    icon: const Icon(Icons.image_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.gif_outlined),
+                    icon: const Icon(Icons.gif_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.poll_outlined),
+                    icon: const Icon(Icons.poll_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.pin_drop_outlined),
+                    icon: const Icon(Icons.pin_drop_outlined),
                     color: twitBlue,
                   ),
                 ],

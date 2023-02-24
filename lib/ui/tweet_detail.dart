@@ -103,12 +103,12 @@ class _TweetDetailState extends State<TweetDetail> {
                                       radius: 26,
                                       backgroundColor: twitDarkGrey,
                                     ),
-                                    SizedBox(width: 15),
+                                    const SizedBox(width: 15),
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Username',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -116,7 +116,7 @@ class _TweetDetailState extends State<TweetDetail> {
                                           ),
                                           softWrap: true,
                                         ),
-                                        SizedBox(height: 3),
+                                        const SizedBox(height: 3),
                                         Text(
                                           '${widget.tweetmodel.userId}',
                                           style: TextStyle(
@@ -232,7 +232,7 @@ class _TweetDetailState extends State<TweetDetail> {
                               children: [
                                 IconButton(
                                   onPressed: () {},
-                                  icon: FaIcon(
+                                  icon: const FaIcon(
                                     FontAwesomeIcons.comment,
                                     size: 20,
                                   ),
@@ -260,7 +260,7 @@ class _TweetDetailState extends State<TweetDetail> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8),
+                           const  SizedBox(height: 8),
                             Divider(
                               height: 3,
                               color: twitGrey,

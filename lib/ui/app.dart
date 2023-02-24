@@ -25,7 +25,7 @@ class _AppState extends State<App> {
       backgroundColor: twitWhite,
       drawer: TwitDrawer(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: twitWhite,
         elevation: 1,
         centerTitle: true,
@@ -37,7 +37,7 @@ class _AppState extends State<App> {
           _pageIndex != 0
               ? IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.settings_outlined,
                     color: Colors.black,
                   ),

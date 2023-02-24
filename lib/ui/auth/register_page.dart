@@ -6,7 +6,7 @@ import 'package:flutter_application_1/util/reuse_widget.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../app.dart';
+
 
 class RegisterPage extends StatefulWidget {
   @override

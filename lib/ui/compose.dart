@@ -55,7 +55,7 @@ class _ComposeState extends State<Compose> {
             backgroundColor: twitWhite,
             leading: IconButton(
               onPressed: () => Navigator.pop(context),
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close, color: Colors.black,),
             ),
             elevation: 1,
             actions: [
@@ -130,7 +130,7 @@ class _ComposeState extends State<Compose> {
                             color: twitBlue,
                             size: 16,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 3,
                           ),
                           Text(
@@ -146,29 +146,29 @@ class _ComposeState extends State<Compose> {
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               Row(
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.image_outlined),
+                    icon: const Icon(Icons.image_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.gif_outlined),
+                    icon: const Icon(Icons.gif_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.poll_outlined),
+                    icon: const Icon(Icons.poll_outlined),
                     color: twitBlue,
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.pin_drop_outlined),
+                    icon: const Icon(Icons.pin_drop_outlined),
                     color: twitBlue,
                   ),
                 ],

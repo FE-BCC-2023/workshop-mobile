@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             if(state is Authenticated){
               return const App();
             } else if (state is AuthenticatedLoading){
-              return  Scaffold(body: Center(child: CircularProgressIndicator(),),);
+              return  const Scaffold(body: Center(child: CircularProgressIndicator(),),);
             }
             
             return LoginPage();
