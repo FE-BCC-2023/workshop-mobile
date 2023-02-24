@@ -83,14 +83,21 @@ class TwitDrawer extends StatelessWidget {
                       // ...
                     },
                   ),
-                  ListTile(
-                    title: Text(
-                      'Logout',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                    onTap: () {
-                      context.read<AuthBloc>().add(LogoutEvent());
+                  BlocListener<AuthBloc, AuthState>(
+                    listener: (context, state) {
+                      if(state is Unauthenticated){
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>LoginPage() ),(route) => false);
+                      }
                     },
+                    child: ListTile(
+                      title: Text(
+                        'Logout',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                      onTap: () {
+                        context.read<AuthBloc>().add(LogoutEvent());
+                      },
+                    ),
                   ),
                 ],
               ),

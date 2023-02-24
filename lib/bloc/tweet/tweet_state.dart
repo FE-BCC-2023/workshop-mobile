@@ -28,6 +28,8 @@ class GetTweetSucess extends TweetState {
   });
 }
 
+class GetTweetHasNoData extends TweetState {}
+
 class GetTweetEror extends TweetState {
   final String eror;
 

@@ -27,7 +27,7 @@ class _EditPageState extends State<EditPage> {
 
   @override
   void initState() {
-    _tweetInputController.text = widget.tweetModel.description;
+    _tweetInputController.text = widget.tweetModel.description!;
     super.initState();
   }
 

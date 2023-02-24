@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_1/repository/tweet_repository.dart';
-import 'package:meta/meta.dart';
 import 'package:flutter_application_1/model/tweet_model.dart';
 
 part 'tweet_event.dart';
@@ -30,7 +29,7 @@ class TweetBloc extends Bloc<TweetEvent, TweetState> {
       try {
         var reponse = await _tweetRepository.getAllTweet();
 
-        reponse != null ? emit(GetTweetSucess(allTweet: reponse)) : emit(GetTweetEror("Get Tweet faild"));
+        reponse != null ? emit(GetTweetSucess(allTweet: reponse)) : emit(GetTweetHasNoData());
         
       } catch (e) {
         emit(GetTweetEror(e.toString()));

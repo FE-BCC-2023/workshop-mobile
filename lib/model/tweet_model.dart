@@ -12,12 +12,12 @@ class TweetModel {
         required this.id,
     });
 
-    String title;
-    String description;
-    int userId;
-    DateTime createdAt;
-    DateTime updatedAt;
-    int id;
+    String? title;
+    String? description;
+    int? userId;
+    DateTime? createdAt;
+    DateTime? updatedAt;
+    int? id;
 
     factory TweetModel.fromJson(Map<String, dynamic> json) => TweetModel(
         title: json["title"],
@@ -32,8 +32,8 @@ class TweetModel {
         "title": title,
         "description": description,
         "user_id": userId,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt!.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
         "id": id,
     };
 }

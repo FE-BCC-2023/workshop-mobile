@@ -49,7 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
         if(state is AuthEror){
           ReuseableWidget.showSnackBar(context, state.eror);
         }
-        else if(state is AuthSuccess){
+        else if(state is RegisterSuccess){
           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(builder: (context) => LoginPage()),
                               (route) => false);

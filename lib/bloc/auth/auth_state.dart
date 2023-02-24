@@ -12,6 +12,8 @@ class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {}
 
+class RegisterSuccess extends AuthState {}
+
 class AuthEror extends AuthState {
   final String eror;
 

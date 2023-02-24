@@ -150,7 +150,7 @@ class _TweetDetailState extends State<TweetDetail> {
                                           context.read<TweetBloc>().add(
                                               DeleteTweet(
                                                   tweetId:
-                                                      widget.tweetmodel.id));
+                                                      widget.tweetmodel.id!));
                                         },
                                       ),
                                       PopupMenuItem(
@@ -187,7 +187,7 @@ class _TweetDetailState extends State<TweetDetail> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              widget.tweetmodel.description,
+                              widget.tweetmodel.description!,
                               style: TextStyle(
                                 fontSize: 20,
                               ),

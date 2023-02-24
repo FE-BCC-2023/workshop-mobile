@@ -35,12 +35,11 @@ class TweetRepository {
 
         return tweet;
       } else {
-        print("createTweet is fail [tweet_repository] : ${response.body}");
+        return null;
       }
     } catch (e) {
-      print("craeteTweet eror ${e.toString()}");
+      throw Exception("craeteTweet eror ${e.toString()}");
     }
-    return null;
   }
 
   Future getAllTweet() async {
@@ -61,18 +60,21 @@ class TweetRepository {
       if (response.statusCode == 200) {
         var data = json.decode(response.body);
 
-        List<TweetModel> allTweet = (data['data'] as List<dynamic>)
-            .map((e) => TweetModel.fromJson(e))
-            .toList();
+        if (data['data'] != null) {
+          List<TweetModel> allTweet = (data['data'] as List<dynamic>)
+              .map((e) => TweetModel.fromJson(e))
+              .toList();
 
-        return allTweet;
+          return allTweet;
+        }
       } else {
-        print("getAllTweet has fail [tweet_repository] : ${response.body}");
+        return null;
+        
       }
+      
     } catch (e) {
-      print("GetAllTwet eror [tweet_repositoiry] : ${e.toString()}");
+      throw Exception("GetAllTwet eror [tweet_repositoiry] : ${e.toString()}");
     }
-    return null;
   }
 
   Future updateTweet(TweetModel tweetModel) async {
@@ -92,16 +94,13 @@ class TweetRepository {
             'id': tweetModel.id
           }));
 
-      if (response.statusCode == 200) {
-        print("Updatetweet has succes [tweet_repository]");
-        return true;
-      } else {
-        print("Updatetweet has fail [tweet_repository]");
-      }
+          return response.statusCode == 200 ? true : false;
+
+      
     } catch (e) {
-      print("Eror at updatetweet [tweet_repository] : ${e.toString()}");
+      throw Exception("Eror at updatetweet [tweet_repository] : ${e.toString()}");
     }
-    return false;
+    
   }
 
   Future deleteTweet(int tweetId) async {
@@ -111,23 +110,15 @@ class TweetRepository {
     try {
       var response = await _client.delete(uri, headers: {
         "Authorization": "Bearer $token",
-        
-      },
-      body: {
-        'id' : tweetId.toString(),
-      }
-      );
+      }, body: {
+        'id': tweetId.toString(),
+      });
 
-      if(response.statusCode == 200){
-        print("Delete tweet has succes [tweet_repository]");
-        return true;
-      } else{
-        print("Delete tweet has fail [tweet_repository]");
+      return response.statusCode == 200 ? true : false;
 
-      }
     } catch (e) {
-      print("Eror at delete tweet : ${e.toString()}");
+      throw Exception("Eror at delete tweet : ${e.toString()}");
     }
-    return false;
+ 
   }
 }

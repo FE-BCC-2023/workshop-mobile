@@ -32,15 +32,13 @@ class _HomePageState extends State<HomePage> {
           listener: (context, state) {
             if(state is GetTweetEror){
               ReuseableWidget.showSnackBar(context, state.eror);
-            } else if (state is DeleteTweetSuccess){
-              ReuseableWidget.showSnackBar(context, "Delete tweet succees");
-            }
+            } 
           },
           builder: (context, state) {
             if(state is GetTweetLoading){
               return const Scaffold(body: Center(child: CircularProgressIndicator(),),);
             }
-            if(state is GetTweetSucess){
+            else if(state is GetTweetSucess){
               return ListView.separated(
               separatorBuilder: (BuildContext context, int index) {
                 return Container(
@@ -55,6 +53,9 @@ class _HomePageState extends State<HomePage> {
                 );
               },
             );
+            }
+            else if(state is GetTweetHasNoData){
+              return const SizedBox();
             }
             return const SizedBox();
           },

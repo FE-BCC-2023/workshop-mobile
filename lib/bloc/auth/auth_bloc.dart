@@ -17,7 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           response != null ? emit(Authenticated()) : emit(AuthenticatedEror(eror: "IshasLogin Fail [auth_bloc]"));
 
-          print("IsHasLogin Event has finish [auth_bloc]");
+          
         } catch (eror) {
           emit(AuthenticatedEror(eror: eror.toString() ));
         }
@@ -30,10 +30,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             event.email, event.password);
 
         response
-            ? emit(AuthSuccess())
+            ? emit(RegisterSuccess())
             : emit(AuthEror("Register Event Failed"));
 
-        print("Register Event has finish [auth_bloc]");
+       
       } catch (e) {
         emit(AuthEror(e.toString()));
       }
@@ -47,19 +47,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         response ? emit(AuthSuccess()) : emit(AuthEror("Login Event Failed"));
 
-        print("Login Event has finish [auth_bloc]");
+       
       } catch (e) {
         emit(AuthEror(e.toString()));
       }
     });
 
     on<LogoutEvent>((event, emit) async {
-      emit(AuthenticatedLoading());
+      
       try {
-        var response = await Cache.deleteData('token_user');
+         await Cache.deleteData('token_user');
         emit(Unauthenticated());
       } catch (e) {
-        print("eror at logout event [auth_bloc] : ${e.toString()}");
+        emit(AuthenticatedEror(eror: "eror at logout event [auth_bloc] : ${e.toString()}"));
         
       }
     });

@@ -126,7 +126,7 @@ class TweetTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            tweetmodel.description,
+            tweetmodel.description!,
             overflow: TextOverflow.ellipsis,
             maxLines: 9,
             softWrap: true,
